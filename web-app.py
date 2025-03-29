@@ -33,7 +33,9 @@ def redirect_to_bot(request):
             if bot_username:
                 return f"<html><head><meta http-equiv='refresh' content='0; url={TELEGRAM_BOT_URL}{bot_username}' /></head></html>"
         else:
+            print(f'Token ({token}) is invalid.')
             tokens.remove(token)
+            print(f'Removed ({token}).')
             save_tokens(tokens)
 
     return "Нет доступных ботов", 503
